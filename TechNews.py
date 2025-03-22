@@ -8,13 +8,13 @@ def TechCrunch():
     
     articles = soup.find_all("a", class_="loop-card__title-link")
     news = []
-    for item in articles[:5]:  # Limit to first 5 articles
+    for item in articles[:5]:  
         title = item.text.strip()
         link = item["href"]
         news.append({"title": title, "link": link})
     print("Top tech news from Tech CRunch")
-    for news in news:
-        print(news)
+    for news_article in news:
+        print(news_article)
 
 def TOI():
     url="https://timesofindia.indiatimes.com/gadgets-news"
@@ -31,8 +31,8 @@ def TOI():
         title=item.get('title')
         news.append({"title": title, "link": link})
     print("Top tech news from Times Of India")
-    for news in news:
-        print(news)
+    for news_article in news:
+        print(news_article)
 def GGL():
     url="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen"
     page=requests.get(url)
@@ -45,10 +45,11 @@ def GGL():
         title=item.find('button').get('aria-label')[6:]
         news.append({"title": title, "link": link})
     print("Top tech news from GOOGLE NEWS")
-    for news in news:
-        print(news)
-TechCrunch()
-TOI()
-GGL()
-
+    for news_article in news:
+        print(news_article)
+def main():
+    TechCrunch()
+    TOI()
+    GGL()
+main()
 
